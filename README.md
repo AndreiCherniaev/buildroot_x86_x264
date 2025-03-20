@@ -5,8 +5,8 @@ Config [qemu_x86_x264_defconfig](my_external_tree/configs/qemu_x86_openh264_defc
 
 ## Clone
 ```
-git clone --remote-submodules --recurse-submodules -j8 https://github.com/AndreiCherniaev/buildroot_x86_non-simd_openh264_meson.git
-cd buildroot_x86_non-simd_openh264_meson
+git clone --remote-submodules --recurse-submodules -j8 https://github.com/AndreiCherniaev/buildroot_x86_x264.git
+cd buildroot_x86_x264
 ```
 ## Make image
 In example I use qemu_x86_defconfig
