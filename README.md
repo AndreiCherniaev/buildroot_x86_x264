@@ -9,16 +9,16 @@ git clone --remote-submodules --recurse-submodules -j8 https://github.com/Andrei
 cd buildroot_x86_x264
 ```
 ## Make image
-In example I use qemu_x86_defconfig
+In example I use qemu_x86_x264_defconfig
 ```
 make clean -C buildroot
-make BR2_EXTERNAL=$PWD/my_external_tree -C $PWD/buildroot qemu_x86_defconfig
+make BR2_EXTERNAL=$PWD/my_external_tree -C $PWD/buildroot qemu_x86_x264_defconfig
 make -C buildroot
 ```
 ## Save non-default buildroot .config
-To save non-default buildroot's buildroot/.config to $PWD/my_external_tree/configs/f2fs_qemu_x86_defconfig
+To save non-default buildroot's buildroot/.config to $PWD/my_external_tree/configs/qemu_x86_x264_defconfig
 ```
-make -C $PWD/buildroot savedefconfig BR2_DEFCONFIG=$PWD/my_external_tree/configs/qemu_x86_defconfig
+make -C $PWD/buildroot savedefconfig BR2_DEFCONFIG=$PWD/my_external_tree/configs/qemu_x86_x264_defconfig
 ```
 ## Start in QEMU
 This code is based on emulation [script1](https://github.com/buildroot/buildroot/blob/02540771bccf7b10c7daecce5f0e1e41a73c1e07/boot/grub2/readme.txt#L4) and [script2](https://github.com/buildroot/buildroot/blob/9e3d572ff532df945fbc282fed22d10098e5718b/board/pc/readme.txt), for qemu_x86_openh264_defconfig run the emulation with:
