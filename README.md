@@ -8,6 +8,14 @@ Config [qemu_x86_x264_defconfig](my_external_tree/configs/qemu_x86_openh264_defc
 git clone --remote-submodules --recurse-submodules -j8 https://github.com/AndreiCherniaev/buildroot_x86_x264.git
 cd buildroot_x86_x264
 ```
+## Synthesize MJPEG video
+input.yuvj422p video I plan use as input to test in x264's CLI.
+```
+# sudo apt install ffmpeg
+mkdir -p my_external_tree/board/my_company/my_board/fs-overlay/root/input.yuvj422p
+ffmpeg -y -f lavfi -i testsrc=size=1280x720:rate=1:duration=10 -vcodec mjpeg -pix_fmt yuvj422p -f mjpeg my_external_tree/board/my_company/my_board/fs-overlay/root/input.yuvj422p
+```
+
 ## Make image
 In example I use qemu_x86_x264_defconfig
 ```
@@ -26,6 +34,11 @@ This code is based on emulation [script1](https://github.com/buildroot/buildroot
 qemu-system-i386 -M pc -kernel buildroot/output/images/bzImage -drive file=buildroot/output/images/rootfs.ext2,if=virtio,format=raw -append "rootwait root=/dev/vda console=tty1 console=ttyS0" -serial stdio -net nic,model=virtio -net user
 ```
 Note: Optionally add `-nographic` to see output not in extra screen but in console terminal. Or `-display curses` to pseudographic.
+
+Test
+```
+x264 --crf 24 -o o.mkv input.yuvj422p
+```
 
 ## Problems
 In case of problems to fix it and then build again
