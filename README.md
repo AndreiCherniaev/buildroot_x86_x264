@@ -12,6 +12,7 @@ cd buildroot_x86_x264
 input.yuvj422p video I plan use as input to test in x264's CLI. This step is optional, by default you will use already existing `input.y4m` file from this repo. This step is if you want to synthesize video again.
 ```
 # sudo apt install ffmpeg
+# mkdir -p my_external_tree/board/my_company/my_board/fs-overlay/root/
 ffmpeg -f lavfi -i testsrc=size=384x288:rate=1:duration=3 -vcodec wrapped_avframe -pix_fmt yuv420p my_external_tree/board/my_company/my_board/fs-overlay/root/input.y4m
 ```
 
